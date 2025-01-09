@@ -1,7 +1,6 @@
 package com.arduinoppi.apippi.repository;
 
 import com.arduinoppi.apippi.domain.DadosSensoriais;
-import com.arduinoppi.apippi.web.dto.PesquisaDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -36,4 +36,8 @@ public class DadosSensoriaisService {
         return dadosSensoriaisRepository.findByRangeTimeSensor(pesquisaDTO.getDataInicial(), pesquisaDTO.getDataFinal(), pesquisaDTO.getSensor());
 
     }
+
+    public List<DadosSensoriais> findAll() {
+        return dadosSensoriaisRepository.findAll();
+    }
 }
