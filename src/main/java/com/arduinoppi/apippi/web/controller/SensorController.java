@@ -2,7 +2,7 @@ package com.arduinoppi.apippi.web.controller;
 
 import com.arduinoppi.apippi.domain.Sensor;
 import com.arduinoppi.apippi.service.SensorService;
-import com.arduinoppi.apippi.web.dto.SensorUpdateDTO;
+import com.arduinoppi.apippi.web.dto.SensorCreateDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,13 +17,13 @@ public class SensorController {
     private final SensorService sensorService;
 
     @PostMapping
-    public ResponseEntity<Sensor> save(@RequestBody Sensor sensor) {
+    public ResponseEntity<Sensor> save(@RequestBody SensorCreateDTO sensor) {
         Sensor saved_sensor = sensorService.save(sensor);
         return ResponseEntity.ok(saved_sensor);
     }
 
     @GetMapping(value = "/{name}")
-    public ResponseEntity<Sensor> findByName(@RequestParam String name) {
+    public ResponseEntity<Sensor> findByName(@PathVariable String name) {
         Sensor sensor = sensorService.findByName(name);
         return ResponseEntity.ok(sensor);
     }
@@ -35,7 +35,7 @@ public class SensorController {
     }
 
     @PutMapping(value = "/{name}")
-    public ResponseEntity<Sensor> update(@RequestBody SensorUpdateDTO dto) {
+    public ResponseEntity<Sensor> update(@RequestBody SensorCreateDTO dto) {
         Sensor sensor = sensorService.updateSensor(dto);
         return ResponseEntity.ok(sensor);
     }

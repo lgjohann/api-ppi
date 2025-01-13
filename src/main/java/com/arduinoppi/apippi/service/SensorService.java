@@ -2,7 +2,7 @@ package com.arduinoppi.apippi.service;
 
 import com.arduinoppi.apippi.domain.Sensor;
 import com.arduinoppi.apippi.repository.SensorRepository;
-import com.arduinoppi.apippi.web.dto.SensorUpdateDTO;
+import com.arduinoppi.apippi.web.dto.SensorCreateDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +16,8 @@ public class SensorService {
     private final SensorRepository sensorRepository;
 
     @Transactional
-    public Sensor save(Sensor sensor) {
+    public Sensor save(SensorCreateDTO dto) {
+        Sensor sensor = dto.toSensor();
         return sensorRepository.save(sensor);
     }
 
@@ -33,7 +34,7 @@ public class SensorService {
     }
 
     @Transactional
-    public Sensor updateSensor(SensorUpdateDTO dto) {
+    public Sensor updateSensor(SensorCreateDTO dto) {
         Sensor sensor = findByName(dto.getName());
         sensor.setNome(dto.getName());
         sensor.setValorConfig(dto.getValorConfig());
